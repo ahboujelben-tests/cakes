@@ -1,42 +1,34 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import reactLogo from "./assets/react.svg";
+import {
+  MutationCache,
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { BrowserRouter } from "react-router";
 import PWABadge from "./PWABadge.tsx";
-import appLogo from "/favicon.svg";
+import { Cakes } from "./pages/cakes.tsx";
+
+const queryClient = new QueryClient({
+  queryCache: new QueryCache(),
+  mutationCache: new MutationCache(),
+  defaultOptions: { mutations: { retry: false } },
+});
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then(console.log);
-  }, []);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={appLogo} className="logo" alt="cakes-ui logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>cakes-ui</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <PWABadge />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <div className="bg-background relative">
+          <h1 className="bg-sidebar-primary text-sidebar-primary-foreground font-extrabold tracking-tight text-4xl lg:text-5xl text-center p-8">
+            Awesome Cakes!
+          </h1>
+          <div className="fixed overflow-auto w-full bottom-0 top-26 lg:top-28 lg:pt-4">
+            <Cakes />
+          </div>
+        </div>
+        <PWABadge />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
