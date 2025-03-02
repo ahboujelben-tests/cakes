@@ -1,0 +1,29 @@
+{
+  "name": "cakes",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "prepare": "pnpm run -r --if-present exec prepare",
+    "lint": "pnpm run -r --if-present lint",
+    "lint:fix": "pnpm run lint --fix",
+    "formatting-check": "prettier --check '**/*.{json,js,jsx,ts,tsx,md,sql}'",
+    "format:all": "prettier --write '**/*.{json,js,jsx,ts,tsx,md,sql}'",
+    "typecheck": "pnpm run -r --if-present typecheck",
+    "fix:all": "pnpm format:all && pnpm lint:fix",
+    "start": "conc -k -c auto \"pnpm:start:*\"",
+    "start:api": "pnpm --filter cakes-api run dev",
+    "start:ui": "pnpm -filter cakes-ui run dev"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1",
+    "sharp": "0.32.6",
+    "sharp-ico": "0.1.5"
+  },
+  "devDependencies": {
+    "concurrently": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@9.15.2"
+}
