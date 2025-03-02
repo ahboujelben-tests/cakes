@@ -10,17 +10,32 @@
     "start": "node dist/index.js",
     "dev": "nodemon --watch src --ext ts --exec node --inspect=9233 -r tsx src/index.ts",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "db-migrate": "prisma migrate dev",
+    "db-seed": "prisma db seed",
+    "db-reset": "prisma migrate reset --force",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/client": "catalog:",
+    "compression": "catalog:",
+    "cors": "catalog:",
     "dotenv": "catalog:",
-    "express": "catalog:"
+    "express": "catalog:",
+    "helmet": "catalog:",
+    "winston": "catalog:"
   },
   "devDependencies": {
+    "@types/compression": "catalog:",
+    "@types/cors": "catalog:",
     "@types/express": "catalog:",
     "eslint": "catalog:",
     "globals": "catalog:",
     "nodemon": "catalog:",
+    "prisma": "catalog:",
     "tsx": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"

@@ -4,8 +4,8 @@
     "lib": [
       "ES2020"
     ] /* Specify library files to be included in the compilation. */,
-    "module": "NodeNext" /* Specify what module code is generated. */,
-    "moduleResolution": "nodenext" /* Resolve modules using Node.js-style module resolution. */,
+    "module": "ES2022" /* Specify what module code is generated. */,
+    "moduleResolution": "bundler" /* Resolve modules using Node.js-style module resolution. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
     "strict": true /* Enable all strict type-checking options. */,

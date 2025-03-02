@@ -4,13 +4,14 @@
   "description": "",
   "private": true,
   "scripts": {
-    "prepare": "pnpm run -r --if-present exec prepare",
     "lint": "pnpm run -r --if-present lint",
     "lint:fix": "pnpm run lint --fix",
-    "formatting-check": "prettier --check '**/*.{json,js,jsx,ts,tsx,md,sql}'",
-    "format:all": "prettier --write '**/*.{json,js,jsx,ts,tsx,md,sql}'",
+    "formatting-check": "prettier --check '**/*.{json,js,jsx,ts,tsx,md}'",
+    "format:all": "prettier --write '**/*.{json,js,jsx,ts,tsx,md}'",
     "typecheck": "pnpm run -r --if-present typecheck",
     "fix:all": "pnpm format:all && pnpm lint:fix",
+    "postgres-start": "docker-compose -f postgres/docker-compose.yml up -d",
+    "postgres-stop": "docker-compose -f postgres/docker-compose.yml down",
     "start": "conc -k -c auto \"pnpm:start:*\"",
     "start:api": "pnpm --filter cakes-api run dev",
     "start:ui": "pnpm -filter cakes-ui run dev"
