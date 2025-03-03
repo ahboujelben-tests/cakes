@@ -58,6 +58,10 @@ Cleanup: Run this to stop and remove the Postgres instance (add `-v` to remove t
 pnpm run postgres-stop
 ```
 
+## Demo
+
+https://github.com/user-attachments/assets/ea2ca369-5449-41ca-aa4d-9047b3165c63
+
 ## Tech Stack
 
 - DB
