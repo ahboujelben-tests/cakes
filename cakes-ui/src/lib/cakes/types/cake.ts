@@ -6,4 +6,4 @@ export interface Cake {
   yumFactor: YumFactor;
 }
 
-type YumFactor = 1 | 2 | 3 | 4 | 5;
+export type YumFactor = 1 | 2 | 3 | 4 | 5;

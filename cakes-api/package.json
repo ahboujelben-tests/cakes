@@ -26,7 +26,8 @@
     "dotenv": "catalog:",
     "express": "catalog:",
     "helmet": "catalog:",
-    "winston": "catalog:"
+    "winston": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/compression": "catalog:",

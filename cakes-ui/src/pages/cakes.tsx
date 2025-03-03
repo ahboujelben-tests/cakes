@@ -37,9 +37,7 @@ export function Cakes() {
             <img
               src={cake.imageUrl}
               alt={cake.name}
-              width={400}
-              height={400}
-              className="rounded-md"
+              className="rounded-md h-[400px] w-[400px] object-cover"
             />
           </CardContent>
         </Card>
