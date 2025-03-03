@@ -1,22 +1,25 @@
 import { Cake } from "@prisma/client";
 import { createCake } from "./createCake";
+import { deleteCake } from "./deleteCake";
+import { findCakeById } from "./findCakeById";
 import { findCakeByName } from "./findCakeByName";
 import { listCakes } from "./listCakes";
+import { updateCake } from "./updateCake";
 
 interface CakesRepository {
-  listCakes: () => Promise<Cake[]>;
+  listCakes: () => Promise<Pick<Cake, "id" | "name" | "imageUrl">[]>;
   createCake: (cake: Omit<Cake, "id">) => Promise<Cake>;
-  findCakeById: (id: number) => Promise<Cake>;
+  findCakeById: (id: number) => Promise<Cake | null>;
   findCakeByName: (name: string) => Promise<Cake | null>;
-  updateCake: (id: number, cake: Cake) => Promise<Cake>;
+  updateCake: (id: number, cake: Omit<Cake, "id">) => Promise<void>;
   deleteCake: (id: number) => Promise<void>;
 }
 
 export const cakesRepository: CakesRepository = {
   listCakes,
   createCake,
-  findCakeById: () => Promise.resolve({} as Cake),
+  findCakeById,
   findCakeByName,
-  updateCake: () => Promise.resolve({} as Cake),
-  deleteCake: () => Promise.resolve(),
+  updateCake,
+  deleteCake,
 };

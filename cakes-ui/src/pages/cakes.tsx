@@ -1,6 +1,8 @@
+import { ErrorPlaceholder } from "@/components/design/ErrorPlaceholder";
 import { SkeletonCard } from "@/components/design/SkeletonCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useListCakes } from "@/lib/cakes/store/useListCakes";
+import { Link } from "react-router";
 
 export function Cakes() {
   const { cakes, isLoading, isError } = useListCakes();
@@ -16,32 +18,27 @@ export function Cakes() {
   }
 
   if (!cakes || isError) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <h4 className="text-destructive-foreground text-center p-4">
-          Oh no! Something went wrong 🥲 <br />
-          Please refresh the page or try again later!
-        </h4>
-      </div>
-    );
+    return <ErrorPlaceholder />;
   }
 
   return (
-    <div className="flex items-center flex-wrap justify-center gap-4 p-4">
+    <>
       {cakes.map((cake) => (
-        <Card key={cake.id} className="items-center">
-          <CardHeader>
-            <CardTitle>{cake.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <img
-              src={cake.imageUrl}
-              alt={cake.name}
-              className="rounded-md h-[400px] w-[400px] object-cover"
-            />
-          </CardContent>
-        </Card>
+        <Link to={`/cake/${cake.id}`} key={cake.id}>
+          <Card className="items-center hover:shadow-lg hover:scale-102 hover:bg-secondary transition-transform">
+            <CardHeader>
+              <CardTitle>{cake.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <img
+                src={cake.imageUrl}
+                alt={cake.name}
+                className="rounded-md w-full aspect-square sm:size-[400px] object-cover border"
+              />
+            </CardContent>
+          </Card>
+        </Link>
       ))}
-    </div>
+    </>
   );
 }

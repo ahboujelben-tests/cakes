@@ -7,37 +7,38 @@ async function main() {
     data: [
       {
         name: "Chocolate Fudge Cake",
-        comment: "Delicious",
+        comment: "Delicious and rich chocolate cake with a fudgy texture.",
         imageUrl: "/cakes/chocolate-fudge.webp",
         yumFactor: 5,
       },
       {
         name: "Carrot Cake",
-        comment: "Yummy",
+        comment:
+          "Yummy carrot cake with a hint of cinnamon and cream cheese frosting.",
         imageUrl: "/cakes/carrot-cake.webp",
         yumFactor: 4,
       },
       {
         name: "Vanilla Sponge",
-        comment: "Tasty",
+        comment: "Tasty vanilla sponge cake, light and fluffy.",
         imageUrl: "/cakes/vanilla-sponge.webp",
         yumFactor: 3,
       },
       {
         name: "Lemon Drizzle",
-        comment: "Scrumptious",
+        comment: "Scrumptious lemon drizzle cake with a zesty lemon glaze.",
         imageUrl: "/cakes/lemon-drizzle.webp",
         yumFactor: 4,
       },
       {
         name: "Banana Bread",
-        comment: "Heavenly",
+        comment: "Heavenly banana bread, moist and full of banana flavor.",
         imageUrl: "/cakes/banana-bread.webp",
         yumFactor: 5,
       },
       {
         name: "Red Velvet",
-        comment: "Divine",
+        comment: "Divine red velvet cake with a smooth cream cheese frosting.",
         imageUrl: "/cakes/red-velvet.webp",
         yumFactor: 4,
       },

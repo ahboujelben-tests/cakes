@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import { z } from "zod";
+import { logger } from "../../logger/logger";
 import { cakesRepository } from "../repository/repository";
 
 export const createCake: RequestHandler = async (req, res) => {
@@ -7,8 +8,9 @@ export const createCake: RequestHandler = async (req, res) => {
 
   // validate request body
   try {
-    createCakeBody.parse(req.body);
+    cakeBody.parse(req.body);
   } catch (error) {
+    logger.error(error);
     res.status(400).send("Invalid request body");
     return;
   }
@@ -29,12 +31,13 @@ export const createCake: RequestHandler = async (req, res) => {
       yumFactor,
     });
   } catch (error) {
+    logger.error(error);
     res.status(500).send();
   }
   res.status(201).send();
 };
 
-const createCakeBody = z.object({
+export const cakeBody = z.object({
   name: z.string().nonempty({ message: "Name is required." }),
   comment: z
     .string()

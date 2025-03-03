@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import helmet from "helmet";
 import { cakesRouter } from "./cakes/routers/router";
-import { logger } from "./logger/logger";
+import { loggerMiddleware } from "./logger/logger";
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ app.use(compression());
 app.use(cors());
 
 // Setup logger middleware
-app.use(logger());
+app.use(loggerMiddleware);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("You have reached the cakes API");

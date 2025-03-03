@@ -2,10 +2,11 @@ import { RequestHandler } from "express";
 import { logger } from "../../logger/logger";
 import { cakesRepository } from "../repository/repository";
 
-export const listCakes: RequestHandler = async (req, res) => {
+export const deleteCake: RequestHandler = async (req, res) => {
   try {
-    const cakes = await cakesRepository.listCakes();
-    res.json(cakes);
+    const id = Number(req.params.id);
+    await cakesRepository.deleteCake(id);
+    res.status(204).send();
   } catch (error) {
     logger.error(error);
     res.status(500).send();

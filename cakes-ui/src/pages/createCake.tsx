@@ -72,7 +72,7 @@ export function CreateCake() {
   }
 
   return (
-    <Card className="max-w-lg mx-auto my-4">
+    <Card className="w-full sm:w-[400px]">
       <CardHeader>
         <CardTitle>Add a new cake</CardTitle>
       </CardHeader>
@@ -137,18 +137,22 @@ export function CreateCake() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value={"1"}>🤷</SelectItem>
-                      <SelectItem value={"2"}>Alright</SelectItem>
-                      <SelectItem value={"3"}>Great!</SelectItem>
-                      <SelectItem value={"4"}>Delicious!</SelectItem>
-                      <SelectItem value={"5"}>Scrumptious!</SelectItem>
+                      <SelectItem value={"1"}>1 - 🤷</SelectItem>
+                      <SelectItem value={"2"}>2 - Alright</SelectItem>
+                      <SelectItem value={"3"}>3 - Great!</SelectItem>
+                      <SelectItem value={"4"}>4 - Delicious!</SelectItem>
+                      <SelectItem value={"5"}>5 - Scrumptious!</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isLoading}>
+            <Button
+              className="cursor-pointer"
+              type="submit"
+              disabled={isLoading}
+            >
               Submit
             </Button>
           </form>

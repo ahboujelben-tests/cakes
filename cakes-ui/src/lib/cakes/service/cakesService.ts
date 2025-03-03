@@ -3,8 +3,12 @@ import { Cake } from "../types/cake";
 class CakesService {
   async getCakes() {
     const response = await fetch("/api/cakes");
-    return (await response.json()) as Cake[];
+    if (!response.ok) {
+      throw new CakesServiceError("Failed to get cakes", response.status);
+    }
+    return (await response.json()) as Pick<Cake, "id" | "name" | "imageUrl">[];
   }
+
   async createCake(cake: Omit<Cake, "id">) {
     const response = await fetch("/api/cakes", {
       method: "POST",
@@ -18,12 +22,20 @@ class CakesService {
     }
     return;
   }
+
+  async getCake(id: number) {
+    const response = await fetch(`/api/cakes/${id}`);
+    if (!response.ok) {
+      throw new CakesServiceError("Failed to get cake", response.status);
+    }
+    return (await response.json()) as Cake;
+  }
 }
 
 export class CakesServiceError extends Error {
   constructor(
     message: string,
-    public statusCode: number
+    public statusCode: number,
   ) {
     super(message);
     this.name = "CakesServiceError";
